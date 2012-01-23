@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<style>
+		body{
+			margin:0;
+		}
+		.movie-holder{
+			position:relative;
+			width:626px;
+			height:260px;
+			background-image: url("assets/images/preview.jpg");
+		}
+	</style>
+	<body>
+		<div id="movie" class="movie-holder"></div>
+		<button id="seek">68</button>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="javascript/libs/swfobject.js"></script>
+		<script src="javascript/com/jquery-video.js"></script>
+		<script>
+			$("#movie").video({
+				"videos" : ["assets/videos/batman_raises.mp4", "assets/videos/batman_raises.webm"],
+				"youtubeId" : "7gFwvozMHR4",
+				"playerCreated" : function(){
+					$("#movie").video("play");
+					$("#seek").click(function(){
+						$("#movie").video("seekTo",68);
+					});
+				},
+				"timeUpdated" : function(currentTime, duration, obj){
+					//console.log(currentTime, duration);
+				}
+			});
+		</script>
+	</body>
+</html>
